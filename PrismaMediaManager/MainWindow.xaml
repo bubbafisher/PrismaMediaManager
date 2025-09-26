@@ -11,7 +11,7 @@
             <TabItem Header="Download">
                 <Grid>
                     <StackPanel Margin="5">
-                        <TextBox Text="URL" HorizontalAlignment="Stretch" Margin="5"/>
+                        <TextBox Name="urlBox" Text="URL" HorizontalAlignment="Stretch" Margin="5"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                             <RadioButton GroupName="DownloadOutputType" Content="Video" Checked="RadioButton_Checked"/>
                             <RadioButton GroupName="DownloadOutputType" Content="Audio" Checked="RadioButton_Checked"/>
@@ -20,9 +20,9 @@
                         <Expander Header="Advanced Settings" Margin="10">
 
                         </Expander>
-                        <Button Content="Download" HorizontalAlignment="Stretch" Margin="5" Style="{DynamicResource AccentButtonStyle}"/>
+                        <Button Content="Download" HorizontalAlignment="Stretch" Margin="5" Style="{DynamicResource AccentButtonStyle}" Click="Button_Click"/>
                         <Expander Header="Output">
-                            <TextBlock Text="" IsEnabled="False" Height="300"/>
+                            <TextBlock Name="debugBox" Text="" IsEnabled="False" Height="300"/>
 
                         </Expander>
                     </StackPanel>
