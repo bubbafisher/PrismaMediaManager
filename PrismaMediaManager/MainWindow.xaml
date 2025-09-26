@@ -29,7 +29,7 @@
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                             <TextBox Text="Input File" Width="455" Margin="0,0,5,0"/>
-                            <Button Content="Browse" HorizontalAlignment="Right"/>
+                            <Button Content="Browse" HorizontalAlignment="Right" Click="Button_Click"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                             <RadioButton GroupName="OutputType" Content="Video" IsChecked="True"/>

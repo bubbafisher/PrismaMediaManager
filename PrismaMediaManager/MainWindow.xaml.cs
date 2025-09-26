@@ -21,5 +21,12 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        CheckDependencies();
+    }
+
+    private void CheckDependencies()
+    {
+        FFmpeg.CheckDependencies();
+        yt_dlp.CheckDependencies();
     }
 }
