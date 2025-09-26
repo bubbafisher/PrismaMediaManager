@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prisma_Media_Manager"
         mc:Ignorable="d"
-        Title="Prisma Media Manager" Height="320" Width="560">
+        Title="Prisma Media Manager" Width="560" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize">
     <Grid>
         <TabControl Grid.ColumnSpan="2">
             <TabItem Header="Download">
@@ -13,12 +13,19 @@
                     <StackPanel Margin="5">
                         <TextBox Text="URL" HorizontalAlignment="Stretch" Margin="5"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                            <RadioButton GroupName="OutputType" Content="Video" IsChecked="True"/>
-                            <RadioButton GroupName="OutputType" Content="Audio"/>
-                            <ComboBox Width="120" Background="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
+                            <RadioButton GroupName="DownloadOutputType" Content="Video" Checked="RadioButton_Checked"/>
+                            <RadioButton GroupName="DownloadOutputType" Content="Audio" Checked="RadioButton_Checked"/>
+                            <ComboBox Name="downloadFormat" Width="120" Background="{DynamicResource AccentTextFillColorTertiaryBrush}" Foreground="{DynamicResource AccentTextTertiaryBrush}"/>
                         </StackPanel>
-                        <Button Content="Download" HorizontalAlignment="Stretch" Margin="25" Style="{DynamicResource AccentButtonStyle}"/>
+                        <Expander Header="Advanced Settings" Margin="10">
 
+                        </Expander>
+                        <Button Content="Download" HorizontalAlignment="Stretch" Margin="5" Style="{DynamicResource AccentButtonStyle}"/>
+                        <Expander Header="Output">
+                            <TextBlock Text="" IsEnabled="False" Height="300"/>
+
+                        </Expander>
+                        <ComboBox Width="120"/>
                     </StackPanel>
 
 
@@ -32,11 +39,15 @@
                             <Button Content="Browse" HorizontalAlignment="Right"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                            <RadioButton GroupName="OutputType" Content="Video" IsChecked="True"/>
-                            <RadioButton GroupName="OutputType" Content="Audio"/>
-                            <ComboBox Width="120" Background="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
+                            <RadioButton GroupName="ConvertOutputType" Content="Video" Checked="RadioButton_Checked"/>
+                            <RadioButton GroupName="ConvertOutputType" Content="Audio" Checked="RadioButton_Checked"/>
+                            <ComboBox Name="convertFormat" Width="120" Background="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
                         </StackPanel>
                         <Button Content="Convert" HorizontalAlignment="Stretch" Style="{DynamicResource AccentButtonStyle}" Margin="25"/>
+                        <Expander Header="Output">
+                            <TextBlock Text="" IsEnabled="False" Height="300"/>
+
+                        </Expander>
                     </StackPanel>
                 </Grid>
             </TabItem>
