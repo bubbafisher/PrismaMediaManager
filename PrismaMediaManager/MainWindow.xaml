@@ -11,14 +11,25 @@
             <TabItem Header="Download">
                 <Grid>
                     <StackPanel Margin="5">
-                        <TextBox Name="urlBox" Text="URL" HorizontalAlignment="Stretch" Margin="5"/>
+                        <GroupBox Header="URL">
+                            <TextBox Name="urlBox" Text="" HorizontalAlignment="Stretch" Margin="5"/>
+                        </GroupBox>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                             <RadioButton GroupName="DownloadOutputType" Content="Video" Checked="RadioButton_Checked"/>
                             <RadioButton GroupName="DownloadOutputType" Content="Audio" Checked="RadioButton_Checked"/>
                             <ComboBox Name="downloadFormat" Width="120" Background="{DynamicResource AccentTextFillColorTertiaryBrush}" Foreground="{DynamicResource AccentTextTertiaryBrush}"/>
                         </StackPanel>
                         <Expander Header="Advanced Settings" Margin="10">
-
+                            <ScrollViewer Height="150">
+                                <StackPanel>
+                                    <GroupBox Header="Misc">
+                                        <StackPanel>
+                                            <CheckBox Name="additionalParamsCheck" Content="Additional parameters" Click="additionalParamsCheck_Changed"/>
+                                            <TextBox Name="additionalParams" IsEnabled="False"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </ScrollViewer>
                         </Expander>
                         <Button Content="Download" HorizontalAlignment="Stretch" Margin="5" Style="{DynamicResource AccentButtonStyle}" Click="Button_Click"/>
                         <Expander Header="Output">
@@ -33,10 +44,12 @@
             <TabItem Header="Convert">
                 <Grid>
                     <StackPanel Margin="5">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                            <TextBox Text="Input File" Width="455" Margin="0,0,5,0"/>
-                            <Button Content="Browse" HorizontalAlignment="Right"/>
-                        </StackPanel>
+                        <GroupBox Header="Input File">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                                <TextBox Text="" Width="455" Margin="0,0,5,0"/>
+                                <Button Content="Browse" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </GroupBox>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                             <RadioButton GroupName="ConvertOutputType" Content="Video" Checked="RadioButton_Checked"/>
                             <RadioButton GroupName="ConvertOutputType" Content="Audio" Checked="RadioButton_Checked"/>
@@ -50,8 +63,24 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="About">
-                <Grid></Grid>
+            <TabItem Header="Settings">
+                <Grid>
+                    <ScrollViewer Height="450">
+                        <StackPanel Margin="5">
+                            <Grid Margin="10">
+                                <Button Content="About this app"/>
+                            </Grid>
+                            <StackPanel Orientation="Horizontal" Margin="10">
+                                <Label Content="Theme" VerticalAlignment="Center" Margin="10"/>
+                                <ComboBox Name="themeBox" SelectedIndex="0" IsEnabled="False">
+                                    <ComboBoxItem Content="System"/>
+                                    <ComboBoxItem Content="Light"/>
+                                    <ComboBoxItem Content="Dark"/>
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

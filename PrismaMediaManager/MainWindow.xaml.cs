@@ -67,6 +67,8 @@ public partial class MainWindow : Window
             if (saveDialog.ShowDialog() == true)
             {
                 yt_dlp download = new yt_dlp(urlBox.Text, saveDialog.FileName, format);
+                if (additionalParamsCheck.IsChecked == true)
+                    download.SetAdditionalParameters(additionalParams.Text);
                 download.DownloadVideo(debugBox);
             }
         }
@@ -82,5 +84,11 @@ public partial class MainWindow : Window
         else
             result = true;
         return result;
+    }
+
+    private void additionalParamsCheck_Changed(object sender, RoutedEventArgs e)
+    {
+        var checkBox = sender as CheckBox;
+        additionalParams.IsEnabled = (bool)checkBox.IsChecked;
     }
 }

@@ -17,6 +17,7 @@ namespace Prisma_Media_Manager
         static string exePath = Directory.GetCurrentDirectory() + @"\deps\yt-dlp.exe";
         //Object variables
         private string sourceUrl, outputPath, format;
+        private string additionalParams;
 
         public static void CheckDependencies()
         {
@@ -39,13 +40,23 @@ namespace Prisma_Media_Manager
             format = type;
         }
 
+        public void SetAdditionalParameters(string p)
+        {
+            additionalParams = p;
+        }
+
         public void DownloadVideo(System.Windows.Controls.TextBlock output)
         {
+            //Construct the command string
+            string commandString = $"{sourceUrl} --recode-video {format} -o \"{outputPath}\"";
+            if (additionalParams != null)
+                commandString += " " + additionalParams;
+
             string readError;
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
             startInfo.FileName = exePath;
-            startInfo.Arguments = $"{sourceUrl} --recode-video {format} -o \"{outputPath}\"";
+            startInfo.Arguments = commandString;
             startInfo.UseShellExecute = false;
             startInfo.RedirectStandardError = true;
             startInfo.RedirectStandardOutput = false;
