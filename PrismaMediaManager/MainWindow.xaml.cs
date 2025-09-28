@@ -8,6 +8,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.IO.Pipelines;
 
 namespace Prisma_Media_Manager;
 
@@ -54,7 +55,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private void Button_Click(object sender, RoutedEventArgs e)
+    private void DownloadFile(object sender, RoutedEventArgs e)
     {
         if (ValidateDownloadFields())
         {
@@ -66,10 +67,28 @@ public partial class MainWindow : Window
 
             if (saveDialog.ShowDialog() == true)
             {
-                yt_dlp download = new yt_dlp(urlBox.Text, saveDialog.FileName, format);
+                yt_dlp download = new yt_dlp(url, saveDialog.FileName, format);
                 if (additionalParamsCheck.IsChecked == true)
                     download.SetAdditionalParameters(additionalParams.Text);
                 download.DownloadVideo(debugBox);
+            }
+        }
+    }
+
+    private void ConvertFile(object sender, RoutedEventArgs e)
+    {
+        if (ValidateConvertFields())
+        {
+            string file = inputFileBox.Text;
+            string format = convertFormat.Text;
+            var saveDialog = new Microsoft.Win32.SaveFileDialog();
+            saveDialog.DefaultExt = $".{format}";
+            saveDialog.Filter = $"Media file (.{format})|*.{format}";
+
+            if (saveDialog.ShowDialog() == true)
+            {
+                FFmpeg download = new FFmpeg(file, saveDialog.FileName, format);
+                download.ConvertFile(ConvertDebugBox);
             }
         }
     }
@@ -86,9 +105,35 @@ public partial class MainWindow : Window
         return result;
     }
 
+    private bool ValidateConvertFields()
+    {
+        bool result = false;
+        if (inputFileBox.Text == "URL" || inputFileBox.Text.Replace(" ", "") == "")
+            MessageBox.Show("Please pick a file to convert!", "Prisma Media Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+        else if (convertFormat.Text == "URL" || convertFormat.Text.Replace(" ", "") == "")
+            MessageBox.Show("Please select a file format!", "Prisma Media Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+        else
+            result = true;
+        return result;
+    }
+
     private void additionalParamsCheck_Changed(object sender, RoutedEventArgs e)
     {
         var checkBox = sender as CheckBox;
         additionalParams.IsEnabled = (bool)checkBox.IsChecked;
+    }
+
+    private void BrowseForFile(object sender, RoutedEventArgs e)
+    {
+        string file = inputFileBox.Text;
+        string format = convertFormat.Text;
+        var openDialog = new Microsoft.Win32.OpenFileDialog();
+        openDialog.DefaultExt = $".*";
+        openDialog.Filter = $"All Files|*.*";
+
+        if (openDialog.ShowDialog() == true)
+        {
+            inputFileBox.Text = openDialog.FileName;
+        }
     }
 }

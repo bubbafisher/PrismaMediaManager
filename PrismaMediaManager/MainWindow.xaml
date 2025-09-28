@@ -31,7 +31,7 @@
                                 </StackPanel>
                             </ScrollViewer>
                         </Expander>
-                        <Button Content="Download" HorizontalAlignment="Stretch" Margin="5" Style="{DynamicResource AccentButtonStyle}" Click="Button_Click"/>
+                        <Button Content="Download" HorizontalAlignment="Stretch" Margin="5" Style="{DynamicResource AccentButtonStyle}" Click="DownloadFile"/>
                         <Expander Header="Output">
                             <TextBlock Name="debugBox" Text="" IsEnabled="False" Height="300"/>
 
@@ -46,8 +46,8 @@
                     <StackPanel Margin="5">
                         <GroupBox Header="Input File">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                                <TextBox Text="" Width="455" Margin="0,0,5,0"/>
-                                <Button Content="Browse" HorizontalAlignment="Right"/>
+                                <TextBox Name="inputFileBox" Text="" Width="455" Margin="0,0,5,0"/>
+                                <Button Content="Browse" HorizontalAlignment="Right" Click="BrowseForFile"/>
                             </StackPanel>
                         </GroupBox>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
@@ -55,9 +55,9 @@
                             <RadioButton GroupName="ConvertOutputType" Content="Audio" Checked="RadioButton_Checked"/>
                             <ComboBox Name="convertFormat" Width="120" Background="{DynamicResource AccentTextFillColorTertiaryBrush}" Foreground="{DynamicResource AccentTextTertiaryBrush}"/>
                         </StackPanel>
-                        <Button Content="Convert" HorizontalAlignment="Stretch" Style="{DynamicResource AccentButtonStyle}" Margin="25"/>
+                        <Button Content="Convert" HorizontalAlignment="Stretch" Style="{DynamicResource AccentButtonStyle}" Margin="25" Click="ConvertFile"/>
                         <Expander Header="Output">
-                            <TextBlock Text="" IsEnabled="False" Height="300"/>
+                            <TextBlock Name="ConvertDebugBox" Text="" IsEnabled="False" Height="300"/>
 
                         </Expander>
                     </StackPanel>
