@@ -30,7 +30,7 @@ namespace Prisma_Media_Manager
             format = type;
         }
 
-        public void ConvertFile(System.Windows.Controls.TextBlock output)
+        public void ConvertFile()
         {
             //Construct the command string
             string commandString = $"-i \"{inputFile}\" \"{outputFile}\"";

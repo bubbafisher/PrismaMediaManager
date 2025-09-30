@@ -45,7 +45,20 @@ namespace Prisma_Media_Manager
             additionalParams = p;
         }
 
-        public void DownloadVideo(System.Windows.Controls.TextBlock output)
+        ///TODO:
+        ///Implement the following
+        /*
+        process.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
+        {
+            output.Dispatcher.Invoke(() =>
+            {
+                output.Text = process.StandardOutput.ReadLine();
+            });
+        });
+        process.Start();
+        process.BeginOutputReadLine();
+        */
+        public void DownloadVideo()
         {
             //Construct the command string
             string commandString = $"{sourceUrl} --recode-video {format} -o \"{outputPath}\"";

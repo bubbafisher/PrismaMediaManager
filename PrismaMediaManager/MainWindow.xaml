@@ -32,10 +32,6 @@
                             </ScrollViewer>
                         </Expander>
                         <Button Content="Download" HorizontalAlignment="Stretch" Margin="5" Style="{DynamicResource AccentButtonStyle}" Click="DownloadFile"/>
-                        <Expander Header="Output">
-                            <TextBlock Name="debugBox" Text="" IsEnabled="False" Height="300"/>
-
-                        </Expander>
                     </StackPanel>
 
 
@@ -56,10 +52,6 @@
                             <ComboBox Name="convertFormat" Width="120" Background="{DynamicResource AccentTextFillColorTertiaryBrush}" Foreground="{DynamicResource AccentTextTertiaryBrush}"/>
                         </StackPanel>
                         <Button Content="Convert" HorizontalAlignment="Stretch" Style="{DynamicResource AccentButtonStyle}" Margin="25" Click="ConvertFile"/>
-                        <Expander Header="Output">
-                            <TextBlock Name="ConvertDebugBox" Text="" IsEnabled="False" Height="300"/>
-
-                        </Expander>
                     </StackPanel>
                 </Grid>
             </TabItem>

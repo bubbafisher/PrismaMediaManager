@@ -70,7 +70,7 @@ public partial class MainWindow : Window
                 yt_dlp download = new yt_dlp(url, saveDialog.FileName, format);
                 if (additionalParamsCheck.IsChecked == true)
                     download.SetAdditionalParameters(additionalParams.Text);
-                download.DownloadVideo(debugBox);
+                download.DownloadVideo();
             }
         }
     }
@@ -88,7 +88,7 @@ public partial class MainWindow : Window
             if (saveDialog.ShowDialog() == true)
             {
                 FFmpeg download = new FFmpeg(file, saveDialog.FileName, format);
-                download.ConvertFile(ConvertDebugBox);
+                download.ConvertFile();
             }
         }
     }
