@@ -24,8 +24,8 @@
                                 <StackPanel>
                                     <GroupBox Header="Misc">
                                         <StackPanel>
-                                            <CheckBox Name="additionalParamsCheck" Content="Additional parameters" Click="additionalParamsCheck_Changed"/>
-                                            <TextBox Name="additionalParams" IsEnabled="False"/>
+                                            <CheckBox Name="additionalParamsCheck" Content="Additional parameters" Margin="10" Click="additionalParamsCheck_Changed"/>
+                                            <TextBox Name="additionalParams" IsEnabled="False" TextWrapping="Wrap" MaxWidth="470" Margin="10,0,10,10"/>
                                         </StackPanel>
                                     </GroupBox>
                                 </StackPanel>
@@ -42,7 +42,7 @@
                     <StackPanel Margin="5">
                         <GroupBox Header="Input File">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                                <TextBox Name="inputFileBox" Text="" Width="455" Margin="0,0,5,0"/>
+                                <TextBox Name="inputFileBox" Text="" Width="435" Margin="0,0,5,0"/>
                                 <Button Content="Browse" HorizontalAlignment="Right" Click="BrowseForFile"/>
                             </StackPanel>
                         </GroupBox>
