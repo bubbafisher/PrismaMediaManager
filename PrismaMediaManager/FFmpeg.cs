@@ -48,6 +48,7 @@ namespace Prisma_Media_Manager
             process.StartInfo = startInfo;
             process.Start();
 
+            //TODO: Implement output redirection
             //StreamReader reader = process.StandardOutput;
 
             process.WaitForExit();
@@ -73,14 +74,11 @@ namespace Prisma_Media_Manager
                     });
                 };
             }
-            //else
-            //{
-            //    readError = reader.ReadLine();
-            //    if (!(readError == null))
-            //    {
-            //        MessageBox.Show(readError, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    }
-            //}
+            //TODO: Implement error handling and recognition
+            else
+            {
+                MessageBox.Show("Something went wrong with converting the file! Please make sure the input file is a valid media file.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
